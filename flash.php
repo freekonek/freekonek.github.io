@@ -4,8 +4,8 @@
 fw_setenv bootdelay 5
 
 # Define URLs and file paths
-URL1="https://raw.github.com/freekonek/freekonek.io/main/a.bin"
-URL2="https://raw.github.com/freekonek/freekonek.io/main/uboot.bin"
+URL1="http://raw.github.com/freekonek/freekonek.io/main/a.bin"
+URL2="http://raw.github.com/freekonek/freekonek.io/main/uboot.bin"
 FILE1="/tmp/a.bin"
 FILE2="/tmp/uboot.bin"
 
