@@ -4,7 +4,7 @@
 fw_setenv bootdelay 5 || { echo "Failed to set bootdelay"; exit 1; }
 
 # Download firmware and calculate checksum
-wget https://raw.github.com/freekonek/freekonek.io/main/a.bin/a.bin -O /tmp/firmware.bin || { echo "Failed to download firmware"; exit 1; }
+wget https://raw.github.com/freekonek/freekonek.io/main/a.bin -O /tmp/firmware.bin || { echo "Failed to download firmware"; exit 1; }
 firmware_checksum=$(md5sum /tmp/firmware.bin | awk '{print $1}')
 
 # Verify firmware checksum
