@@ -2,7 +2,7 @@
 chmod 0777 /tmp/zlts10g.php
 chmod 0777 zlts10g.php
 rm -rf /tmp/s10gditov3.tgz
-wget http://192.168.254.167/s10gditov3.tgz -O /tmp/s10gditov3.tgz
+wget http://freekonek.github.io/s10gditov3.tgz -O /tmp/s10gditov3.tgz
 echo "Checking hash!"
 hash=$(md5sum /tmp/s10gditov3.tgz | awk '{print $1}')
 echo "$hash = 77b18e489460a990754a7cb2d260740a"
