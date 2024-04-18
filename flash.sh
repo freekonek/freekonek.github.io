@@ -4,9 +4,9 @@
 fw_setenv bootdelay 5
 
 # Download firmware binary using wget
-wge http://freekonek.github.io/r051-stock-12-3.bin -O /tmp/firmware.bin 2> /dev/null
+wge http://freekonek.github.io/r051-stock-12-3.bin -O /tmp/firmware.bin
 
-# Check if download was successful
+#Check if download was successful
 if [ $? -ne 0 ]; then
     echo "Failed to download firmware."
     exit 1
@@ -23,7 +23,7 @@ if [ "$checksum" != "$expected_checksum" ]; then
 fi
 
 # Download uboot binary using wget
-wget http://freekonek.github.io/uboot.bin -O /tmp/uboot.bin 2> /dev/null
+wget http://freekonek.github.io/uboot.bin -O /tmp/uboot.bin
 
 # Check if download was successful
 if [ $? -ne 0 ]; then
