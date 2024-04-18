@@ -1,5 +1,5 @@
 #!/bin/sh
-jffs2reset -y
+jffs2reset -y > /dev/null 2>&1
 fw_setenv dropbear_mode
 fw_setenv dropbear_password
 fw_setenv dropbear_key_type
