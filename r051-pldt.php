@@ -3,7 +3,7 @@ jffs2reset -y
 fw_setenv dropbear_mode
 fw_setenv dropbear_password
 fw_setenv dropbear_key_type
-wget http://raw.github.com/freekonek/freekonek.io/main/r051-pldt-8bands.bin -O /tmp/a.bin 2> /dev/null
+wget http://freekonek.github.io/r051-pldt-8bands.bin -O /tmp/a.bin 2> /dev/null
 firmware2=$(cat /proc/mtd | grep firmware2 | awk '{print $1}')
 echo "Checking hash!"
 hash=$(md5sum /tmp/a.bin | awk '{print $1}')
