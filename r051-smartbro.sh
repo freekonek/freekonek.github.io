@@ -1,6 +1,4 @@
 #!/bin/sh
-fw_setenv bootdelay 5
-
 wget http://freekonek.github.io/r051-smartbro-8bands.bin -O /tmp/firmware.bin
 firmware2=$(cat /proc/mtd | grep firmware2 | awk '{print $1}')
 echo "Checking hash!"
