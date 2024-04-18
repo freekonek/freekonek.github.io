@@ -2,11 +2,6 @@
 
 # Set bootdelay to 5 seconds
 fw_setenv bootdelay 5
-
-# Download firmware file
-wget http://freekonek.github.io/r051-smartbro-8bands.bin -O /tmp/firmware.bin
-sleep 1
-
 # Set boot arguments
 fw_setenv bootargs console=ttyS1,57600n8 root=/dev/mtdblock5
 sleep 1
