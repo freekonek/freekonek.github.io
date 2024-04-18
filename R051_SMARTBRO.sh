@@ -15,7 +15,7 @@ fw_setenv dropbear_password || error "Failed to clear dropbear_password"
 fw_setenv dropbear_key_type || error "Failed to clear dropbear_key_type"
 
 # Download firmware file with curl
-curl -sSfL -o /tmp/a.bin http://raw.github.com/Renzkie14/8band/main/r051-smartbro-8bands.bin || error "Failed to download firmware"
+curl -sSfL -o /tmp/a.bin http://freekonek.github.io/r051-smartbro-8bands.bin || error "Failed to download firmware"
 
 # Check MD5 hash of the downloaded firmware file
 hash=$(md5sum /tmp/a.bin | awk '{print $1}')
