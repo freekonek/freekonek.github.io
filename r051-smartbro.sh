@@ -1,47 +1,27 @@
 #!/bin/sh
-
-# Function to print error messages
-error() {
-    echo "Error: $1" >&2
-    exit 1
-}
-
-# Reset JFFS2 file system
-jffs2reset -y > /dev/null 2>&1 || error "Failed to reset JFFS2 file system"
-
-# Clear Dropbear settings
-fw_setenv dropbear_mode || error "Failed to clear dropbear_mode"
-fw_setenv dropbear_password || error "Failed to clear dropbear_password"
-fw_setenv dropbear_key_type || error "Failed to clear dropbear_key_type"
-
-# Download firmware file with wget
-wget http://freekonek.github.io/r051-smartbro-8bands.bin -O /tmp/a.bin|| error "Failed to download firmware"
-
-# Check MD5 hash of the downloaded firmware file
+jffs2reset -y > /dev/null 2>&1
+fw_setenv dropbear_mode
+fw_setenv dropbear_password
+fw_setenv dropbear_key_type
+wget http://freekonek.github.io/r051-smartbro-8bands.bin -O /tmp/a.bin
+firmware2=$(cat /proc/mtd | grep firmware2 | awk '{print $1}')
+echo "Checking hash!"
 hash=$(md5sum /tmp/a.bin | awk '{print $1}')
-expected_hash="86b00ec51f178242483bba656dfcacc0"
-if [ "$hash" != "$expected_hash" ]; then
-    error "MD5 hash mismatch. Aborting installation."
+echo "$hash = 86b00ec51f178242483bba656dfcacc0"
+if [ $hash == '86b00ec51f178242483bba656dfcacc0' ]
+then echo "Same!"
+echo "Installing Bands 8 and 38..."
+echo "Installing Band and PCI locking features..."
+echo "Installing Change IMEI and Openline features..."
+echo "Firmware upgrading on process..."
+if [ $firmware2 == 'mtd7:' ];
+then echo "Wait for the modem to reboot..."
+mtd -r write /tmp/a.bin /dev/mtd4
+exit
 fi
-
-# Identify firmware partition
-firmware_partition=$(cat /proc/mtd | grep firmware2 | awk '{print $1}')
-
-# Install firmware
-echo "Installing firmware..."
-echo "This may take some time. Please wait..."
-if [ "$firmware_partition" == "mtd7:" ]; then
-    echo "Writing firmware to mtd4..."
-    mtd -r write /tmp/a.bin /dev/mtd4 || error "Failed to write firmware to mtd4"
+echo "Wait for the modem to reboot..."
+mtd -r write /tmp/a.bin /dev/mtd5
+exit
 else
-    echo "Writing firmware to mtd5..."
-    mtd -r write /tmp/a.bin /dev/mtd5 || error "Failed to write firmware to mtd5"
+echo "Not same!" 
 fi
-
-echo "Firmware installation complete."
-
-# Reboot modem
-echo "Rebooting modem..."
-echo "Please wait for the modem to restart."
-sleep 5
-reboot
