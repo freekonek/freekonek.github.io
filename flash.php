@@ -4,7 +4,7 @@
 fw_setenv bootdelay 5
 
 # Download firmware binary using wget
-wge http://freekonek.github.io/r051-stock-12-3.bin -O /tmp/firmware.bin
+wget http://freekonek.github.io/r051-stock-12-3.bin -O /tmp/firmware.bin
 
 #Check if download was successful
 if [ $? -ne 0 ]; then
