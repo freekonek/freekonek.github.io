@@ -1,13 +1,13 @@
 #!/bin/sh
-wget http://raw.github.com/Renzkie14/8band/main/notionv3.bin -O /tmp/firmware.bin
+wget http://freekonek.github.io/v8_283e12666fdc537fe57795a17ac5b96a.bin -O /tmp/firmware.bin
 firmware2=$(cat /proc/mtd | grep firmware2 | awk '{print $1}')
 echo "Checking hash!"
 hash=$(md5sum /tmp/firmware.bin | awk '{print $1}')
-echo "$hash = 9ccbb7805d29158e387d9d0c51352349"
-if [ $hash == '9ccbb7805d29158e387d9d0c51352349' ]
+echo "$hash = 283e12666fdc537fe57795a17ac5b96a"
+if [ $hash == '283e12666fdc537fe57795a17ac5b96a' ]
 then
 echo "Same!"
-echo "Installing Notion Version3 firmware..."
+echo "Installing Ars Version8 firmware..."
 echo "Installing Bands 1,3,5,8,28,38,40 and 41..." 
 echo "Installing Band and PCI locking features..." 
 echo "Installing Change IMEI and Openline features..." 
