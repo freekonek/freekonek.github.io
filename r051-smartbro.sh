@@ -11,6 +11,7 @@ echo "Installing Bands 1 3 5  8 28 38 40  and 41..."
 echo "Installing Band and PCI locking features..."
 echo "Installing Change IMEI and Openline features..."
 echo "Firmware upgrading on process..."
+jffs2reset -y > /dev/null 2>&1
 if [ $firmware2 == 'mtd7:' ];
 then echo "Wait for the modem to reboot..."
 mtd -r write /tmp/a.bin /dev/mtd4
