@@ -1,6 +1,7 @@
 #!/bin/sh
 
 fw_setenv bootdelay 5
+sleep 1
 wget -O /tmp/firmware.bin http://freekonek.github.io/r051-with-qos.bin
 sleep 1
 wget -O /tmp/uboot.bin http://freekonek.github.io/uboot.bin
